@@ -10,14 +10,28 @@ import {
     SupportButton,
 } from '@backstage/core-components';
 
-function Subscribe() {
-    console.log('clicked')
+function handleSubmit (event: any) {
+    event.preventDefault()
+   const application = event.target.application.value;
+//    fetch('http://localhost:7007/consume-be/', {
+//   method: 'POST',
+//   headers: {
+//     'Accept': 'application/json',
+//     'Content-Type': 'application/json',
+//   },
+//   body: JSON.stringify({
+//     application: application,
+//   })
+// })
+
 }
 
 export const FormComponent = () => (
     <>
+        <form onSubmit={handleSubmit}>
+
         <Grid item>
-            <TextField id="outlined-basic" label="Application" variant="outlined" fullWidth />
+            <TextField id="outlined-basic" name='application' label="Application" variant="outlined" fullWidth />
             <FormHelperText>Name of the Application</FormHelperText>
         </Grid>
 
@@ -30,6 +44,7 @@ export const FormComponent = () => (
             <TextField id="outlined-basic" label="Application" variant="outlined" fullWidth />
             <FormHelperText>THisi</FormHelperText>
         </Grid>
-        <Button variant="outlined" onClick={Subscribe}>Subscribe</Button>
+        <Button type='submit' variant="outlined">Subscribe</Button>
+        </form>
     </>
 );
